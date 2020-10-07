@@ -18,3 +18,13 @@ npm run-script build
 poetry shell
 python manage.py runserver
 ```
+
+### Testing
+```
+poetry shell
+python manage.py test
+```
+
+### Code Styling
+- Auto-formatted by Black
+- Linting by Flake8

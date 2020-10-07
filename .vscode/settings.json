@@ -1,4 +1,15 @@
 {
     //"python.pythonPath": "/usr/local/opt/python@3.8/bin/python3.8",
-    "python.pythonPath": "~/Library/Caches/pypoetry/virtualenvs/breslin-salesloft-eval-PNIUd0_q-py3.8/lib/python3.8",
+    "python.pythonPath": "~//Library/Caches/pypoetry/virtualenvs/breslin-salesloft-eval-PNIUd0_q-py3.8/bin/python",
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.formatting.yapfArgs": [
+        "--line-length",
+        "120"
+    ],
+    "python.linting.flake8Args": [
+        "--max-line-length=120",
+        "--ignore=E402",
+    ],
+    "javascript.updateImportsOnFileMove.enabled": "never",
 }
