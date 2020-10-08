@@ -12,6 +12,10 @@
   font-size: .5em;
 }
 
+.App-footer {
+  margin: 20px;
+}
+
 .Nav-buttons {
   margin-bottom: 40px;
 }
@@ -19,4 +23,12 @@
 .Nav-buttons Button {
   margin: 10px 10px;
   padding: 10px 30px;
+}
+
+.Level-description {
+  padding: 10px 10%;
+}
+
+.Custom-table {
+  padding: 40px 10%;
 }

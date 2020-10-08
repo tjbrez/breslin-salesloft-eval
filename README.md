@@ -14,10 +14,12 @@ Live demo running at: https://breslin-salesloft-eval.herokuapp.com/
 
 ### Running
 ```
-npm run-script build
+npm run build
 poetry shell
 python manage.py runserver
 ```
+
+*Note: You'll need to run the frontend app seperately with `npm start` if you want frontend hot-reloading*
 
 ### Testing
 ```
