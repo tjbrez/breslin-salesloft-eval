@@ -8,6 +8,7 @@ urlpatterns = [
     path("", index, name="index"),
     path("char-counts", index, name="index"),
     path("duplicate-people", index, name="index"),
+    path("enterprise-ready", index, name="index"),
     # API routes
     path("api/people", ListPeople.as_view()),
     path("api/people/char-counts", GetEmailCharacterFrequency.as_view()),

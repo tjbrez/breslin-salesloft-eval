@@ -6,6 +6,7 @@ import Link from '@material-ui/core/Link';
 import AllPeople from './AllPeople';
 import CharCounts from './CharCounts';
 import DuplicatePeople from './DuplicatePeople';
+import EnterpriseReady from './EnterpriseReady';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import './App.css';
 
@@ -17,6 +18,7 @@ class App extends React.Component {
       lev1BtnVariant: window.location.pathname === "/" ? "contained" : "outlined",
       lev2BtnVariant: window.location.pathname === "/char-counts" ? "contained" : "outlined",
       lev3BtnVariant: window.location.pathname === "/duplicate-people" ? "contained" : "outlined",
+      lev4BtnVariant: window.location.pathname === "/enterprise-ready" ? "contained" : "outlined",
     }
   }
 
@@ -25,6 +27,7 @@ class App extends React.Component {
       lev1BtnVariant: e.currentTarget.id === "lev1Btn" ? "contained" : "outlined",
       lev2BtnVariant: e.currentTarget.id === "lev2Btn" ? "contained" : "outlined",
       lev3BtnVariant: e.currentTarget.id === "lev3Btn" ? "contained" : "outlined",
+      lev4BtnVariant: e.currentTarget.id === "lev4Btn" ? "contained" : "outlined",
     });
   };
 
@@ -49,6 +52,9 @@ class App extends React.Component {
             <RouterLink to="/duplicate-people">
               <Button id="lev3Btn" onClick={this.handleClick} variant={this.state.lev3BtnVariant} color="primary">Level 3: Duplicate People Records</Button>
             </RouterLink>{' '}
+            <RouterLink to="/enterprise-ready">
+              <Button id="lev4Btn" onClick={this.handleClick} variant={this.state.lev4BtnVariant} color="primary">Level 4: Enterprise Ready</Button>
+            </RouterLink>
           </div>
           <div>
             <Switch>
@@ -60,6 +66,9 @@ class App extends React.Component {
               </Route>
               <Route path="/duplicate-people">
                 <DuplicatePeople />
+              </Route>
+              <Route path="/enterprise-ready">
+                <EnterpriseReady />
               </Route>
             </Switch>
           </div>
