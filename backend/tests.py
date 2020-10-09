@@ -375,4 +375,5 @@ class ServiceTests(TestCase):
 
         assert_that(type(response), equal_to(list))
         assert_that(len(response), equal_to(1))
-        assert_that(response[0]["duplicate_id"], equal_to("101694090_101694088"))
+        assert_that(response[0]["person1_id"], equal_to(101694088))
+        assert_that(response[0]["person2_id"], equal_to(101694090))

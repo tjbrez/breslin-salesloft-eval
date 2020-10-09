@@ -1,4 +1,5 @@
 import environ
+import itertools
 import requests
 
 from fuzzywuzzy import fuzz
@@ -71,37 +72,22 @@ def get_duplicate_people():
     duplicate_records = []
     all_people = get_all_people_from_sl_api()
 
-    # Loop all people and compare email using a fuzzywuzzy partial ratio comparison
-    for person in all_people:
-        for other_person in all_people:
-            email_ratio = fuzz.partial_ratio(person["email_address"].lower(), other_person["email_address"].lower())
-            name_ratio = fuzz.partial_ratio(person["display_name"].lower(), other_person["display_name"].lower())
-            if (email_ratio >= 90 or name_ratio >= 95) and person["id"] != other_person["id"]:
+    # Iterate all people and compare email using a fuzzywuzzy partial ratio comparison
+    for person, other_person in itertools.combinations(all_people, 2):
+        email_ratio = fuzz.partial_ratio(person["email_address"].lower(), other_person["email_address"].lower())
+        if email_ratio >= 90:
 
-                duplicate_id = (
-                    str(max(person["id"], other_person["id"])) + "_" + str(min(person["id"], other_person["id"]))
-                )
-
-                # Check to see if Duplicate is already in the array and skip if it is
-                if next(
-                    (dup for dup in duplicate_records if dup["duplicate_id"] == duplicate_id),
-                    False,
-                ):
-                    continue
-
-                # Add Duplicate dict to array
-                duplicate_records.append(
-                    {
-                        "duplicate_id": duplicate_id,
-                        "person1_id": person["id"],
-                        "person1_name": person["display_name"],
-                        "person1_email": person["email_address"],
-                        "person2_id": other_person["id"],
-                        "person2_name": other_person["display_name"],
-                        "person2_email": other_person["email_address"],
-                        "email_ratio": email_ratio,
-                        "name_ratio": name_ratio,
-                    }
-                )
+            # Add Duplicate dict to array
+            duplicate_records.append(
+                {
+                    "person1_id": person["id"],
+                    "person1_name": person["display_name"],
+                    "person1_email": person["email_address"],
+                    "person2_id": other_person["id"],
+                    "person2_name": other_person["display_name"],
+                    "person2_email": other_person["email_address"],
+                    "email_ratio": email_ratio,
+                }
+            )
 
     return duplicate_records
