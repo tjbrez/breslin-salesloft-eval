@@ -19,12 +19,22 @@ poetry shell
 python manage.py runserver
 ```
 
-*Note: You'll need to run the frontend app seperately with `npm start` if you want frontend hot-reloading*
+The app will be running at http://127.0.0.1:8000
+
+You can also seperately run the the React app with `npm start` (app will be running at http://127.0.0.1:3000).
+This will allow you to make updates to the React app with hot-reloading instead of having to re-build the app
+after every change.
 
 ### Testing
+There are django unit tests for services and API endpoints. These can be run with:
 ```
 poetry shell
 python manage.py test
+```
+
+There are also some frontend jest unit tests for testing React component rendering. These can be run with:
+```
+npm test
 ```
 
 ### Code Styling
