@@ -6,13 +6,13 @@ from .views import index, ListPeople, GetEmailCharacterFrequency, ListDuplicateP
 urlpatterns = [
     # Frontend routes
     path("", index, name="index"),
-    path("char-counts", index, name="index"),
-    path("duplicate-people", index, name="index"),
-    path("enterprise-ready", index, name="index"),
+    path("char-counts", index, name="char-counts"),
+    path("duplicate-people", index, name="duplicate-people"),
+    path("enterprise-ready", index, name="enterprise-ready"),
     # API routes
-    path("api/people", ListPeople.as_view()),
-    path("api/people/char-counts", GetEmailCharacterFrequency.as_view()),
-    path("api/people/duplicates", ListDuplicatePeople.as_view()),
+    path("api/people", ListPeople.as_view(), name="api_all_people"),
+    path("api/people/char-counts", GetEmailCharacterFrequency.as_view(), name="api_char_counts"),
+    path("api/people/duplicates", ListDuplicatePeople.as_view(), name="api_duplicates"),
     # Default Django admin route
     path("admin/", admin.site.urls),
 ]
