@@ -38,20 +38,31 @@ def get_all_people_from_sl_api():
     return all_people
 
 
+def add_character_to_list(character_counts, char):
+    # Helper function to manage and add to character count list
+    exists = False
+    for item in character_counts:
+        if item["character"] == char:
+            item["count"] = item["count"] + 1
+            exists = True
+
+    if exists == False:
+        character_counts.append({"character": char, "count": 1})
+
+    return character_counts
+
+
 def get_email_character_frequency_counts():
-    character_counts = {}
+    character_counts = []
     all_people = get_all_people_from_sl_api()
 
-    # Loop all charcters in all email addresses and add to count dictionary
+    # Loop all charcters in all email addresses and add to count
     for person in all_people:
         for char in person["email_address"]:
-            if char in character_counts:
-                character_counts[char] += 1
-            else:
-                character_counts[char] = 1
+            character_counts = add_character_to_list(character_counts, char)
 
-    # Sort completed dictionary by decending count
-    character_counts = {k: v for k, v in sorted(character_counts.items(), key=lambda item: item[1], reverse=True)}
+    # Sort completed lest by decending count
+    character_counts = sorted(character_counts, key=lambda i: i["count"], reverse=True)
 
     return character_counts
 

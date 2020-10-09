@@ -34,7 +34,7 @@ class GetEmailCharacterFrequency(APIView):
 
     def get(self, request, format=None):
         """
-        Returns a dictionary of email character counts, sorted by frequency.
+        Returns a list of email character counts, sorted by frequency.
         """
         return Response(get_email_character_frequency_counts())
 

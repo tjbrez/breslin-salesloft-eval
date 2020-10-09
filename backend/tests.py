@@ -357,11 +357,12 @@ class ServiceTests(TestCase):
 
         response = get_email_character_frequency_counts()
 
-        assert_that(type(response), equal_to(dict))
+        assert_that(type(response), equal_to(list))
         assert_that(len(response), equal_to(20))
-        assert_that(response["e"], equal_to(11))
-        assert_that(response["x"], equal_to(4))
-        assert_that(response["w"], equal_to(1))
+        assert_that(response[0]["character"], equal_to("e"))
+        assert_that(response[0]["count"], equal_to(11))
+        assert_that(response[19]["character"], equal_to("w"))
+        assert_that(response[19]["count"], equal_to(1))
 
     @patch("backend.services.requests.get")
     def test_can_get_duplicate_people(self, mock_get):
