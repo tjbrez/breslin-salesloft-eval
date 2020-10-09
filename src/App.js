@@ -22,9 +22,9 @@ class App extends React.Component {
 
   handleClick = (e) => {
     this.setState({
-      lev1BtnVariant: e.target.id === "lev1Btn" ? "contained" : "outlined",
-      lev2BtnVariant: e.target.id === "lev2Btn" ? "contained" : "outlined",
-      lev3BtnVariant: e.target.id === "lev3Btn" ? "contained" : "outlined",
+      lev1BtnVariant: e.currentTarget.id === "lev1Btn" ? "contained" : "outlined",
+      lev2BtnVariant: e.currentTarget.id === "lev2Btn" ? "contained" : "outlined",
+      lev3BtnVariant: e.currentTarget.id === "lev3Btn" ? "contained" : "outlined",
     });
   };
 
@@ -40,14 +40,14 @@ class App extends React.Component {
         </header>
         <Router>
           <div className="Nav-buttons">
-            <RouterLink to="/" onClick={this.handleClick}>
-              <Button id="lev1Btn" variant={this.state.lev1BtnVariant} color="primary">Level 1: List All People</Button>
+            <RouterLink to="/">
+              <Button id="lev1Btn" onClick={this.handleClick} variant={this.state.lev1BtnVariant} color="primary">Level 1: List All People</Button>
             </RouterLink>{' '}
-            <RouterLink to="/char-counts" onClick={this.handleClick}>
-              <Button id="lev2Btn" variant={this.state.lev2BtnVariant} color="primary">Level 2: Character Counts</Button>
+            <RouterLink to="/char-counts">
+              <Button id="lev2Btn" onClick={this.handleClick} variant={this.state.lev2BtnVariant} color="primary">Level 2: Character Counts</Button>
             </RouterLink>{' '}
-            <RouterLink to="/duplicate-people" onClick={this.handleClick}>
-              <Button id="lev3Btn" variant={this.state.lev3BtnVariant} color="primary">Level 3: Duplicate People Records</Button>
+            <RouterLink to="/duplicate-people">
+              <Button id="lev3Btn" onClick={this.handleClick} variant={this.state.lev3BtnVariant} color="primary">Level 3: Duplicate People Records</Button>
             </RouterLink>{' '}
           </div>
           <div>
