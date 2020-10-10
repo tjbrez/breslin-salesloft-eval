@@ -13,15 +13,23 @@ Live demo running at: https://breslin-salesloft-eval.herokuapp.com/
 - Poetry (Python package manager)
 
 ### Running
+1. Create a `backend/.env` file for passing your environment variables into the app. There is a `sample.env` file that can be used as a template.
+
+2. Build the React app:
 ```
 npm run build
+```
+
+3. Build and run the Django app:
+```
 poetry shell
+poetry install
 python manage.py runserver
 ```
 
-The app will be running at http://127.0.0.1:8000
+4. The app will be running at http://127.0.0.1:8000
 
-You can also seperately run the the React app with `npm start` (app will be running at http://127.0.0.1:3000).
+5. Optionally, you can also run the the React app with `npm start` (app will be running at http://127.0.0.1:3000).
 This will allow you to make updates to the React app with hot-reloading instead of having to re-build the app
 after every change.
 
